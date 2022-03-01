@@ -1,0 +1,14 @@
+{
+    "click_msg_box" : "/html/body/div[1]/section/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div/div[2]/textarea",
+    "send_message" : "/html/body/div[1]/section/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div/div[3]/button",
+    "login_access" : "/html/body/div[4]/div/div/button[1]",
+    "popup_1" : "//*[@id='react-root']/section/main/div/div/div/div/button",
+    "popup_2" : "/html/body/div[5]/div/div/div/div[3]/button[2]",
+    "direct_button" : "/html/body/div[1]/section/nav/div[2]/div/div/div[3]/div/div[2]/a",
+    "click_pencil" : "/html/body/div[1]/section/div/div[2]/div/div/div[1]/div[1]/div/div[3]/button",
+    "enter_username" : "/html/body/div[6]/div/div/div[2]/div[1]/div/div[2]/input",
+    "click_username" : "/html/body/div[6]/div/div/div[2]/div[2]/div[1]/div/div[3]/button",
+    "next_button" : "/html/body/div[6]/div/div/div[1]/div/div[2]/div/button",
+    "type_msg" : "/html/body/div[1]/section/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div/div[2]/textarea",
+    "insert_flyer" : "//input[@type='file']"
+}

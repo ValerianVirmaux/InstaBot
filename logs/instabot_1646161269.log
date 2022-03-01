@@ -1,0 +1,85 @@
+20:01:10,307 selenium.webdriver.remote.remote_connection DEBUG POST http://localhost:38891/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "pageLoadStrategy": "normal", "goog:chromeOptions": {"extensions": [], "args": ["window-size=1920x1080", "disable-gpu", "--no-sandbox", "--disable-dev-shm-usage"]}}}, "desiredCapabilities": {"browserName": "chrome", "pageLoadStrategy": "normal", "goog:chromeOptions": {"extensions": [], "args": ["window-size=1920x1080", "disable-gpu", "--no-sandbox", "--disable-dev-shm-usage"]}}}
+20:01:10,314 urllib3.connectionpool DEBUG Starting new HTTP connection (1): localhost:38891
+20:01:10,673 urllib3.connectionpool DEBUG http://localhost:38891 "POST /session HTTP/1.1" 200 716
+20:01:10,674 selenium.webdriver.remote.remote_connection DEBUG Finished Request
+20:01:10,675 selenium.webdriver.remote.remote_connection DEBUG POST http://localhost:38891/session/351090d20c2ee4aa3325141f79027024/url {"url": "https://www.instagram.com/"}
+20:01:12,414 urllib3.connectionpool DEBUG http://localhost:38891 "POST /session/351090d20c2ee4aa3325141f79027024/url HTTP/1.1" 200 14
+20:01:12,414 selenium.webdriver.remote.remote_connection DEBUG Finished Request
+20:01:12,415 selenium.webdriver.remote.remote_connection DEBUG POST http://localhost:38891/session/351090d20c2ee4aa3325141f79027024/element {"using": "xpath", "value": "/html/body/div[4]/div/div/button[1]"}
+20:01:12,428 urllib3.connectionpool DEBUG http://localhost:38891 "POST /session/351090d20c2ee4aa3325141f79027024/element HTTP/1.1" 200 88
+20:01:12,428 selenium.webdriver.remote.remote_connection DEBUG Finished Request
+20:01:12,429 selenium.webdriver.remote.remote_connection DEBUG POST http://localhost:38891/session/351090d20c2ee4aa3325141f79027024/element/143794e7-f475-4fbb-bdbc-e5c7900251ac/click {"id": "143794e7-f475-4fbb-bdbc-e5c7900251ac"}
+20:01:12,466 urllib3.connectionpool DEBUG http://localhost:38891 "POST /session/351090d20c2ee4aa3325141f79027024/element/143794e7-f475-4fbb-bdbc-e5c7900251ac/click HTTP/1.1" 200 14
+20:01:12,466 selenium.webdriver.remote.remote_connection DEBUG Finished Request
+20:01:15,470 selenium.webdriver.remote.remote_connection DEBUG POST http://localhost:38891/session/351090d20c2ee4aa3325141f79027024/element {"using": "css selector", "value": "[name=\"username\"]"}
+20:01:15,491 urllib3.connectionpool DEBUG http://localhost:38891 "POST /session/351090d20c2ee4aa3325141f79027024/element HTTP/1.1" 200 88
+20:01:15,491 selenium.webdriver.remote.remote_connection DEBUG Finished Request
+20:01:15,491 selenium.webdriver.remote.remote_connection DEBUG POST http://localhost:38891/session/351090d20c2ee4aa3325141f79027024/element/351c3afb-73db-47c1-9a8b-ca5a1e16d96c/value {"text": "forro.pirata.bcn", "value": ["f", "o", "r", "r", "o", ".", "p", "i", "r", "a", "t", "a", ".", "b", "c", "n"], "id": "351c3afb-73db-47c1-9a8b-ca5a1e16d96c"}
+20:01:15,572 urllib3.connectionpool DEBUG http://localhost:38891 "POST /session/351090d20c2ee4aa3325141f79027024/element/351c3afb-73db-47c1-9a8b-ca5a1e16d96c/value HTTP/1.1" 200 14
+20:01:15,572 selenium.webdriver.remote.remote_connection DEBUG Finished Request
+20:01:15,573 selenium.webdriver.remote.remote_connection DEBUG POST http://localhost:38891/session/351090d20c2ee4aa3325141f79027024/element {"using": "css selector", "value": "[name=\"password\"]"}
+20:01:15,585 urllib3.connectionpool DEBUG http://localhost:38891 "POST /session/351090d20c2ee4aa3325141f79027024/element HTTP/1.1" 200 88
+20:01:15,585 selenium.webdriver.remote.remote_connection DEBUG Finished Request
+20:01:15,585 selenium.webdriver.remote.remote_connection DEBUG POST http://localhost:38891/session/351090d20c2ee4aa3325141f79027024/element/91c6f6d3-c9d5-43b5-9f77-15f48a364ea8/value {"text": "forrodasininho", "value": ["f", "o", "r", "r", "o", "d", "a", "s", "i", "n", "i", "n", "h", "o"], "id": "91c6f6d3-c9d5-43b5-9f77-15f48a364ea8"}
+20:01:15,656 urllib3.connectionpool DEBUG http://localhost:38891 "POST /session/351090d20c2ee4aa3325141f79027024/element/91c6f6d3-c9d5-43b5-9f77-15f48a364ea8/value HTTP/1.1" 200 14
+20:01:15,656 selenium.webdriver.remote.remote_connection DEBUG Finished Request
+20:01:18,660 selenium.webdriver.remote.remote_connection DEBUG POST http://localhost:38891/session/351090d20c2ee4aa3325141f79027024/element {"using": "css selector", "value": "button[type='submit']"}
+20:01:18,680 urllib3.connectionpool DEBUG http://localhost:38891 "POST /session/351090d20c2ee4aa3325141f79027024/element HTTP/1.1" 200 88
+20:01:18,680 selenium.webdriver.remote.remote_connection DEBUG Finished Request
+20:01:18,680 selenium.webdriver.remote.remote_connection DEBUG POST http://localhost:38891/session/351090d20c2ee4aa3325141f79027024/element/dc32360b-cc4a-4aa6-97e4-5398beac5b7a/click {"id": "dc32360b-cc4a-4aa6-97e4-5398beac5b7a"}
+20:01:18,734 urllib3.connectionpool DEBUG http://localhost:38891 "POST /session/351090d20c2ee4aa3325141f79027024/element/dc32360b-cc4a-4aa6-97e4-5398beac5b7a/click HTTP/1.1" 200 14
+20:01:18,734 selenium.webdriver.remote.remote_connection DEBUG Finished Request
+20:01:21,736 selenium.webdriver.remote.remote_connection DEBUG POST http://localhost:38891/session/351090d20c2ee4aa3325141f79027024/element {"using": "xpath", "value": "//*[@id='react-root']/section/main/div/div/div/div/button"}
+20:01:22,396 urllib3.connectionpool DEBUG http://localhost:38891 "POST /session/351090d20c2ee4aa3325141f79027024/element HTTP/1.1" 200 88
+20:01:22,397 selenium.webdriver.remote.remote_connection DEBUG Finished Request
+20:01:22,397 selenium.webdriver.remote.remote_connection DEBUG POST http://localhost:38891/session/351090d20c2ee4aa3325141f79027024/element/f878d528-7910-48cc-ab1f-1438c7a2a9c5/click {"id": "f878d528-7910-48cc-ab1f-1438c7a2a9c5"}
+20:01:24,576 urllib3.connectionpool DEBUG http://localhost:38891 "POST /session/351090d20c2ee4aa3325141f79027024/element/f878d528-7910-48cc-ab1f-1438c7a2a9c5/click HTTP/1.1" 200 14
+20:01:24,577 selenium.webdriver.remote.remote_connection DEBUG Finished Request
+20:01:28,582 selenium.webdriver.remote.remote_connection DEBUG POST http://localhost:38891/session/351090d20c2ee4aa3325141f79027024/element {"using": "xpath", "value": "/html/body/div[5]/div/div/div/div[3]/button[2]"}
+20:01:28,602 urllib3.connectionpool DEBUG http://localhost:38891 "POST /session/351090d20c2ee4aa3325141f79027024/element HTTP/1.1" 200 88
+20:01:28,603 selenium.webdriver.remote.remote_connection DEBUG Finished Request
+20:01:28,603 selenium.webdriver.remote.remote_connection DEBUG POST http://localhost:38891/session/351090d20c2ee4aa3325141f79027024/element/08644d82-57fa-4ea9-8304-3cbd96403247/click {"id": "08644d82-57fa-4ea9-8304-3cbd96403247"}
+20:01:28,649 urllib3.connectionpool DEBUG http://localhost:38891 "POST /session/351090d20c2ee4aa3325141f79027024/element/08644d82-57fa-4ea9-8304-3cbd96403247/click HTTP/1.1" 200 14
+20:01:28,650 selenium.webdriver.remote.remote_connection DEBUG Finished Request
+20:01:32,655 selenium.webdriver.remote.remote_connection DEBUG POST http://localhost:38891/session/351090d20c2ee4aa3325141f79027024/element {"using": "xpath", "value": "/html/body/div[1]/section/nav/div[2]/div/div/div[3]/div/div[2]/a"}
+20:01:32,680 urllib3.connectionpool DEBUG http://localhost:38891 "POST /session/351090d20c2ee4aa3325141f79027024/element HTTP/1.1" 200 88
+20:01:32,681 selenium.webdriver.remote.remote_connection DEBUG Finished Request
+20:01:32,681 selenium.webdriver.remote.remote_connection DEBUG POST http://localhost:38891/session/351090d20c2ee4aa3325141f79027024/element/e645a38e-b4b8-454c-b1a9-0080a1eb0230/click {"id": "e645a38e-b4b8-454c-b1a9-0080a1eb0230"}
+20:01:32,796 urllib3.connectionpool DEBUG http://localhost:38891 "POST /session/351090d20c2ee4aa3325141f79027024/element/e645a38e-b4b8-454c-b1a9-0080a1eb0230/click HTTP/1.1" 200 14
+20:01:32,796 selenium.webdriver.remote.remote_connection DEBUG Finished Request
+20:01:35,800 selenium.webdriver.remote.remote_connection DEBUG POST http://localhost:38891/session/351090d20c2ee4aa3325141f79027024/element {"using": "xpath", "value": "/html/body/div[1]/section/div/div[2]/div/div/div[1]/div[1]/div/div[3]/button"}
+20:01:35,827 urllib3.connectionpool DEBUG http://localhost:38891 "POST /session/351090d20c2ee4aa3325141f79027024/element HTTP/1.1" 200 88
+20:01:35,828 selenium.webdriver.remote.remote_connection DEBUG Finished Request
+20:01:35,829 selenium.webdriver.remote.remote_connection DEBUG POST http://localhost:38891/session/351090d20c2ee4aa3325141f79027024/element/d982a007-2f69-4120-b7dc-a2b04d30056f/click {"id": "d982a007-2f69-4120-b7dc-a2b04d30056f"}
+20:01:35,938 urllib3.connectionpool DEBUG http://localhost:38891 "POST /session/351090d20c2ee4aa3325141f79027024/element/d982a007-2f69-4120-b7dc-a2b04d30056f/click HTTP/1.1" 200 14
+20:01:35,938 selenium.webdriver.remote.remote_connection DEBUG Finished Request
+20:01:37,940 selenium.webdriver.remote.remote_connection DEBUG POST http://localhost:38891/session/351090d20c2ee4aa3325141f79027024/element {"using": "xpath", "value": "/html/body/div[6]/div/div/div[2]/div[1]/div/div[2]/input"}
+20:01:37,959 urllib3.connectionpool DEBUG http://localhost:38891 "POST /session/351090d20c2ee4aa3325141f79027024/element HTTP/1.1" 200 88
+20:01:37,960 selenium.webdriver.remote.remote_connection DEBUG Finished Request
+20:01:37,960 selenium.webdriver.remote.remote_connection DEBUG POST http://localhost:38891/session/351090d20c2ee4aa3325141f79027024/element/d201ce6f-6f53-487e-bb6c-04d11ecc2b0b/value {"text": "larubiahoriginal", "value": ["l", "a", "r", "u", "b", "i", "a", "h", "o", "r", "i", "g", "i", "n", "a", "l"], "id": "d201ce6f-6f53-487e-bb6c-04d11ecc2b0b"}
+20:01:38,23 urllib3.connectionpool DEBUG http://localhost:38891 "POST /session/351090d20c2ee4aa3325141f79027024/element/d201ce6f-6f53-487e-bb6c-04d11ecc2b0b/value HTTP/1.1" 200 14
+20:01:38,24 selenium.webdriver.remote.remote_connection DEBUG Finished Request
+20:01:43,307 selenium.webdriver.remote.remote_connection DEBUG POST http://localhost:38891/session/351090d20c2ee4aa3325141f79027024/element {"using": "xpath", "value": "/html/body/div[6]/div/div/div[2]/div[2]/div[1]/div/div[3]/button"}
+20:01:43,317 urllib3.connectionpool DEBUG http://localhost:38891 "POST /session/351090d20c2ee4aa3325141f79027024/element HTTP/1.1" 200 88
+20:01:43,317 selenium.webdriver.remote.remote_connection DEBUG Finished Request
+20:01:43,317 selenium.webdriver.remote.remote_connection DEBUG POST http://localhost:38891/session/351090d20c2ee4aa3325141f79027024/element/eabab0fd-5f4c-4086-a870-9cbe776092d5/click {"id": "eabab0fd-5f4c-4086-a870-9cbe776092d5"}
+20:01:43,412 urllib3.connectionpool DEBUG http://localhost:38891 "POST /session/351090d20c2ee4aa3325141f79027024/element/eabab0fd-5f4c-4086-a870-9cbe776092d5/click HTTP/1.1" 200 14
+20:01:43,412 selenium.webdriver.remote.remote_connection DEBUG Finished Request
+20:01:45,415 selenium.webdriver.remote.remote_connection DEBUG POST http://localhost:38891/session/351090d20c2ee4aa3325141f79027024/element {"using": "xpath", "value": "/html/body/div[6]/div/div/div[1]/div/div[2]/div/button"}
+20:01:45,451 urllib3.connectionpool DEBUG http://localhost:38891 "POST /session/351090d20c2ee4aa3325141f79027024/element HTTP/1.1" 200 88
+20:01:45,452 selenium.webdriver.remote.remote_connection DEBUG Finished Request
+20:01:45,453 selenium.webdriver.remote.remote_connection DEBUG POST http://localhost:38891/session/351090d20c2ee4aa3325141f79027024/element/79bc9117-5160-430d-ad29-815264928ab8/click {"id": "79bc9117-5160-430d-ad29-815264928ab8"}
+20:01:45,565 urllib3.connectionpool DEBUG http://localhost:38891 "POST /session/351090d20c2ee4aa3325141f79027024/element/79bc9117-5160-430d-ad29-815264928ab8/click HTTP/1.1" 200 14
+20:01:45,565 selenium.webdriver.remote.remote_connection DEBUG Finished Request
+20:01:46,567 selenium.webdriver.remote.remote_connection DEBUG POST http://localhost:38891/session/351090d20c2ee4aa3325141f79027024/element {"using": "xpath", "value": "/html/body/div[1]/section/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div/div[2]/textarea"}
+20:01:46,673 urllib3.connectionpool DEBUG http://localhost:38891 "POST /session/351090d20c2ee4aa3325141f79027024/element HTTP/1.1" 200 88
+20:01:46,674 selenium.webdriver.remote.remote_connection DEBUG Finished Request
+20:01:46,674 selenium.webdriver.remote.remote_connection DEBUG POST http://localhost:38891/session/351090d20c2ee4aa3325141f79027024/element/a4501eab-2c66-4d93-8a50-1b5038304014/click {"id": "a4501eab-2c66-4d93-8a50-1b5038304014"}
+20:01:46,740 urllib3.connectionpool DEBUG http://localhost:38891 "POST /session/351090d20c2ee4aa3325141f79027024/element/a4501eab-2c66-4d93-8a50-1b5038304014/click HTTP/1.1" 200 14
+20:01:46,740 selenium.webdriver.remote.remote_connection DEBUG Finished Request
+20:01:49,750 selenium.webdriver.remote.remote_connection DEBUG POST http://localhost:38891/session/351090d20c2ee4aa3325141f79027024/element {"using": "xpath", "value": "/html/body/div[1]/section/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div/div[2]/textarea"}
+20:01:49,765 urllib3.connectionpool DEBUG http://localhost:38891 "POST /session/351090d20c2ee4aa3325141f79027024/element HTTP/1.1" 200 88
+20:01:49,766 selenium.webdriver.remote.remote_connection DEBUG Finished Request
+20:01:49,768 selenium.webdriver.remote.remote_connection DEBUG POST http://localhost:38891/session/351090d20c2ee4aa3325141f79027024/element/a4501eab-2c66-4d93-8a50-1b5038304014/value {"text": "Nos volvemos a reunir este jueves para m\u00e1s una edici\u00f3n de nuestro FORR\u00d3 LADO B, con Dj Pedro BZ. Veniros a disfrutar del mejor baile de forr\u00f3 brasile\u00f1o, en La Rubia Teatre. Inicio a las 21:00 Entradas Normal: 10\u20ac Entrada antes de las 22:00: 8\u20ac + 1 copa Compra Anticipada (por Bizum): 8\u20ac + 1 copa  M\u00e1s informaciones en la gu\u00eda informativa de eventos en Instagram: @forro.pirata.bcn Producci\u00f3n Pedro BZ", "value": ["N", "o", "s", " ", "v", "o", "l", "v", "e", "m", "o", "s", " ", "a", " ", "r", "e", "u", "n", "i", "r", " ", "e", "s", "t", "e", " ", "j", "u", "e", "v", "e", "s", " ", "p", "a", "r", "a", " ", "m", "\u00e1", "s", " ", "u", "n", "a", " ", "e", "d", "i", "c", "i", "\u00f3", "n", " ", "d", "e", " ", "n", "u", "e", "s", "t", "r", "o", " ", "F", "O", "R", "R", "\u00d3", " ", "L", "A", "D", "O", " ", "B", ",", " ", "c", "o", "n", " ", "D", "j", " ", "P", "e", "d", "r", "o", " ", "B", "Z", ".", " ", "V", "e", "n", "i", "r", "o", "s", " ", "a", " ", "d", "i", "s", "f", "r", "u", "t", "a", "r", " ", "d", "e", "l", " ", "m", "e", "j", "o", "r", " ", "b", "a", "i", "l", "e", " ", "d", "e", " ", "f", "o", "r", "r", "\u00f3", " ", "b", "r", "a", "s", "i", "l", "e", "\u00f1", "o", ",", " ", "e", "n", " ", "L", "a", " ", "R", "u", "b", "i", "a", " ", "T", "e", "a", "t", "r", "e", ".", " ", "I", "n", "i", "c", "i", "o", " ", "a", " ", "l", "a", "s", " ", "2", "1", ":", "0", "0", " ", "E", "n", "t", "r", "a", "d", "a", "s", " ", "N", "o", "r", "m", "a", "l", ":", " ", "1", "0", "\u20ac", " ", "E", "n", "t", "r", "a", "d", "a", " ", "a", "n", "t", "e", "s", " ", "d", "e", " ", "l", "a", "s", " ", "2", "2", ":", "0", "0", ":", " ", "8", "\u20ac", " ", "+", " ", "1", " ", "c", "o", "p", "a", " ", "C", "o", "m", "p", "r", "a", " ", "A", "n", "t", "i", "c", "i", "p", "a", "d", "a", " ", "(", "p", "o", "r", " ", "B", "i", "z", "u", "m", ")", ":", " ", "8", "\u20ac", " ", "+", " ", "1", " ", "c", "o", "p", "a", " ", " ", "M", "\u00e1", "s", " ", "i", "n", "f", "o", "r", "m", "a", "c", "i", "o", "n", "e", "s", " ", "e", "n", " ", "l", "a", " ", "g", "u", "\u00ed", "a", " ", "i", "n", "f", "o", "r", "m", "a", "t", "i", "v", "a", " ", "d", "e", " ", "e", "v", "e", "n", "t", "o", "s", " ", "e", "n", " ", "I", "n", "s", "t", "a", "g", "r", "a", "m", ":", " ", "@", "f", "o", "r", "r", "o", ".", "p", "i", "r", "a", "t", "a", ".", "b", "c", "n", " ", "P", "r", "o", "d", "u", "c", "c", "i", "\u00f3", "n", " ", "P", "e", "d", "r", "o", " ", "B", "Z"], "id": "a4501eab-2c66-4d93-8a50-1b5038304014"}
+20:01:51,283 urllib3.connectionpool DEBUG http://localhost:38891 "POST /session/351090d20c2ee4aa3325141f79027024/element/a4501eab-2c66-4d93-8a50-1b5038304014/value HTTP/1.1" 200 14
+20:01:51,284 selenium.webdriver.remote.remote_connection DEBUG Finished Request
