@@ -10,5 +10,7 @@
     "click_username" : "/html/body/div[6]/div/div/div[2]/div[2]/div[1]/div/div[3]/button",
     "next_button" : "/html/body/div[6]/div/div/div[1]/div/div[2]/div/button",
     "type_msg" : "/html/body/div[1]/section/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div/div[2]/textarea",
-    "insert_flyer" : "//input[@type='file']"
+    "insert_file" : "//input[@type='file']",
+    "video_msg" : "/html/body/div[1]/section/main/div/div[1]/article/div/div[2]/div/div[2]/section[1]/span[3]/button",
+    "send_video" : "/html/body/div[6]/div/div/div[2]/div[4]/button"
 }

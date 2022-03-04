@@ -4,78 +4,131 @@ import os
 from src.utils.decorators import sleep
 from src.utils.load_data import get_message, get_usernames, load_selenium_path, get_errors
 from src.seleniumlauncher import SeleniumManager
-from src.utils.logging_toolbox import log_metrics
+from logs.logging_toolbox import log_metrics
+from src.utils.toolbox import get_file_path
+import sys
 
 
 class InstaBot(SeleniumManager):
 
-    PATH_USERS = "data/usernames/usernames.txt"
+    PATH_USERS = "data/usernames/test.txt"
     PATH_FAIL = "data/usernames/errors.txt"
-    PATH_MSG = "data/messages/text_1.txt"
     PATH_SELENIUM = 'data/selenium_path.json'
 
-    def __init__(self, type):
+    def __init__(self):
         self.base_url = 'https://www.instagram.com/'
         self.users = get_usernames(self.PATH_USERS)
-        self.message = get_message(self.PATH_MSG)
         self.path = load_selenium_path(self.PATH_SELENIUM)
-        self.flyer = "data/flyers/photo.PNG"
+        self.parse_arguments()
         self.setup()
-        self.run(type)
-
-    def run(self, type):
         self._access()
-        self._process(type)
+        self._run()
 
     def _access(self):
+        self._launch_url()
         self._login_access()
         self._login_username()
         self._login_password()
         self._login_validation()
         self._popup_1()
         self._popup_2()
-        self._direct_button()
 
-    def _process(self, type):
+    def _run(self):
+        if self.videoId:
+            self._process_for_videos()
+        if self.message or self.file:
+            self._process_for_file_or_message()
+
+    def _process_for_file_or_message(self):
+        self._click_direct_button()
         for n, user in self._user_iteration():
             try:
                 self._click_pencil()
-                self._enter_username(user)
-                self._click_username()
-                self._next_button()
+                self._select_username(user)
+                self._click_next()
                 self._click_msg_box()
-                if 'flyer' in type:
-                    self._insert_flyer()
-                if 'message' in type:
-                    self._type_msg()
-                    self._send_msg()
-                print(n, user)
+                self._send_info()
+                print('file', n, user)
             except:
-                self._append_to_list(user)
+                self._append_to_error_list(user)
                 self._launch_url()
-                self._direct_button()
-        self._print_statistics()
+                self._click_direct_button()
 
-    def _print_statistics(self):
-        PATH_FAIL = self.PATH_FAIL
-        fail_usernames = get_errors(PATH_FAIL)
+    def _process_for_videos(self):
+        self._access_video_page()
+        for n, user in self._user_iteration():
+            try:
+                self._click_video_msg()
+                self._select_username(user)
+                self._send_video()
+                print('video', n, user)
+            except:
+                self._append_to_error_list(user)
+                self._access_video_page()
 
-        PATH_USERS = self.PATH_USERS
-        all_usernames = get_usernames(PATH_USERS)
+    def _select_username(self, user):
+        self._enter_username(user)
+        self._click_username()
 
-        metrics = round(len(fail_usernames) / len(all_usernames), 3)
+    def _access_video_page(self):
+        video_path = self._get_video_path()
+        self._launch_url(video_path)
+        return
 
-        log_metrics.info(f"Success at {1 - metrics} : {fail_usernames}")
 
+    def parse_arguments(self):
+        videoId, message, file = '', False, False
+        args = [arg for arg in sys.argv if not arg.endswith('.py')]
+        if set(args) - set(['message', 'file', 'video']):
+            unknown = set(args) - set(['message', 'file', 'video'])
+            raise Exception(f"\n\n\nUnknown arguments used: {list(unknown)} \n\n Available arguments : 'message', 'file', 'video' ") 
+        if 'video' in args:
+            videoId = input("Video ID: ")
+            print(f"VIDEO: {videoId}")
+        if 'file' in args:
+            file = get_file_path('data/file/')
+            print(f"FILE: {file}")
+        if 'message' in args:
+            message = get_message('data/messages/')
+        self.videoId = videoId
+        self.message = message
+        self.file = file
+
+    def _get_video_path(self):
+        videoId = self.videoId
+        video_path = f"https://www.instagram.com/reel/{videoId}/"
+        return video_path
+
+    def _send_video(self):
+        path = self.path['send_video']
+        self.click_by_xpath(path)
+
+    def _send_info(self):
+        if self.file:
+            file = self.file
+            self._insert_file(file)
+            print("     file sent")
+        if self.message:
+            self._type_msg()
+            self._send_msg()
+            print("     message sent")
     def _user_iteration(self):
         users = self.users
         for n, user in enumerate(users):
             yield n, user
 
-    def _append_to_list(self, user):
-        print(f"FAIL {user}")
-        with open('data/user_fail.txt', 'a') as fd:
+    def _launch_url(self, url=None):
+        if url:
+            self.driver.get(url)
+        else:
+            base_url = self.base_url
+            self.driver.get(base_url)
+
+    def _append_to_error_list(self, user):
+        PATH_FAIL = self.PATH_FAIL
+        with open(PATH_FAIL, 'a') as fd:
             fd.write(f'\n{user}')
+        print(f"FAIL {user}")
 
     def _click_msg_box(self):
         path = self.path['click_msg_box']
@@ -87,13 +140,13 @@ class InstaBot(SeleniumManager):
         self.click_by_xpath(path)
 
     def _login_username(self):
-        username = os.environ['USERNAME']
+        username = os.environ['INSTAGRAM_USERNAME']
         user = self.find_by_name('username')
         user.send_keys(username)
 
     @sleep(3)
     def _login_password(self):
-        password = os.environ['PASSWORD']
+        password = os.environ['INSTAGRAM_PASSWORD']
         passw = self.find_by_name('password')
         passw.send_keys(password)
 
@@ -113,7 +166,7 @@ class InstaBot(SeleniumManager):
         self.click_by_xpath(path)
 
     @sleep(3)
-    def _direct_button(self):
+    def _click_direct_button(self):
         path = self.path['direct_button']
         self.click_by_xpath(path)
 
@@ -133,8 +186,13 @@ class InstaBot(SeleniumManager):
         path = self.path['click_username']
         self.click_by_xpath(path)
 
+    @sleep(2)
+    def _click_video_msg(self):
+        path = self.path['video_msg']
+        self.click_by_xpath(path)
+
     @sleep(1)
-    def _next_button(self):
+    def _click_next(self):
         path = self.path['next_button']
         self.click_by_xpath(path)
 
@@ -144,8 +202,11 @@ class InstaBot(SeleniumManager):
         chat = self.find_by_xpath(path)
         chat.send_keys(message)
 
-    def _insert_flyer(self):
-        flyer = self.flyer
-        path = self.path['insert_flyer']
+    def _insert_file(self, file):
+        path = self.path['insert_file']
         msg_box = self.find_by_xpath(path)
-        msg_box.send_keys(flyer)
+        msg_box.send_keys(file)
+
+    def _send_msg(self):
+        path = self.path['send_message']
+        self.click_by_xpath(path)

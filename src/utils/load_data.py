@@ -1,6 +1,5 @@
-from src.utils.toolbox import open_txt_file, clean
+from src.utils.toolbox import open_txt_file, clean, get_file_path
 import json
-
 
 def get_usernames(path):
     usernames = open_txt_file(path)
@@ -17,9 +16,11 @@ def get_errors(path):
     errors = [error for error in errors if error]
     return errors
 
-def get_message(path):
+def get_message(directory):
+    path = get_file_path(directory)
     message = open_txt_file(path)
     message_clean = message.replace('\n', ' ')
+    print(f"MESSAGE: {path}")
     return message_clean
 
 

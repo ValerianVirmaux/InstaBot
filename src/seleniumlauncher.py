@@ -1,6 +1,4 @@
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 
 from src.utils.decorators import retry
@@ -17,7 +15,6 @@ class SeleniumManager:
     def setup(self):
         self._get_options()
         self._setup_driver()
-        self._launch_url()
 
 
     def _get_options(self):
@@ -39,9 +36,6 @@ class SeleniumManager:
             driver = webdriver.Chrome(PATH_DRIVER, chrome_options=options)
         self.driver = driver
 
-    def _launch_url(self):
-        url = self.base_url
-        self.driver.get(url)
 
     @retry(3)
     def click_by_xpath(self, path):
@@ -67,9 +61,6 @@ class SeleniumManager:
         element = driver.find_element(By.XPATH, xpath)
         return element
 
-    @retry(3)
-    def _send_msg(self):
-        driver = self.driver
-        driver.send_keys(Keys.RETURN)
+
 
 

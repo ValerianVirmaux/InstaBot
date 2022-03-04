@@ -1,3 +1,8 @@
-sudo docker image ls
-sudo docker run -it -e ENVIRONMENT=DEV -e USERNAME=forro.pirata.bcn -e PASSWORD=forrodasininho fd309b8a2006 /bin/bash
-python3 app.py
+TODO
+
+allow video
+structure text
+build more than 1 list
+driver 98 etc.
+
+
