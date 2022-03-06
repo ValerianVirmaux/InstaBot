@@ -18,17 +18,17 @@ python app.py file message video
 ```
 
 **file**:  <br />
-    Que: Cualquier file en data/file/  <br />
-    Formato: PNG, JPEG, PDF ...  <br />
-    El nombre del fichiero no importa
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Que: Cualquier file en data/file/  <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Formato: PNG, JPEG, PDF ...  <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;El nombre del fichiero no importa
  
 **message**:  <br />
-    Que: Cualquier file en data/messages/  <br />
-    Formato: .txt  <br />
-    El nombre del fichiero no importa    
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Que: Cualquier file en data/messages/  <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Formato: .txt  <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;El nombre del fichiero no importa    
 
 **video**:  <br />
-    Al inicio, tendra que anadir el videoId (ex: Cau0Ahxjf1v)  <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Al inicio, tendra que anadir el videoId (ex: Cau0Ahxjf1v)  <br />
 
 
 El file y message sera enviado en el mismo tiempo a cada uno de los usuario de la lista.  <br />
