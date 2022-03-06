@@ -6,9 +6,9 @@ INSTAGRAM_USERNAME=*********
 INSTAGRAM_PASSWORD=*********
 ```
 
-data/file/*.png  <br />
-data/messagge/*.txt  <br />
-data/usernames/*.txt  <br />
+data/file/cualquier_nombre.png  <br />
+data/messagge/cualquier_nombre.txt  <br />
+data/usernames/cualquier_nombre.txt  <br />
 
 ### RUN
 To launch the script:
