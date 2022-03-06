@@ -34,7 +34,6 @@ python app.py file message video
 El file y message sera enviado en el mismo tiempo a cada uno de los usuario de la lista.  <br />
 La video sera enviado despues, en una segunda iteration.
 
-
 ### TODO
 
 - structured text

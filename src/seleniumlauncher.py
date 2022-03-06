@@ -14,7 +14,6 @@ class SeleniumManager:
         self._get_options()
         self._setup_driver()
 
-
     def _get_options(self):
         options = webdriver.ChromeOptions()
         if env != 'LOCAL':
@@ -29,11 +28,10 @@ class SeleniumManager:
         options = self._options
         if env == 'LOCAL':
             path_driver = get_file_path('config/driver/')
-            driver = webdriver.Chrome(path_driver[0], chrome_options=options)
+            driver = webdriver.Chrome(path_driver, chrome_options=options)
         else:
             driver = webdriver.Chrome(chrome_options=options)
         self.driver = driver
-
 
     @retry(3)
     def click_by_xpath(self, path):
@@ -58,7 +56,3 @@ class SeleniumManager:
         driver = self.driver
         element = driver.find_element(By.XPATH, xpath)
         return element
-
-
-
-

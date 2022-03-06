@@ -19,7 +19,15 @@ def get_file_path(directory):
         for f in filenames:
             file = os.path.abspath(os.path.join(dirpath, f))
             ls_file.append(file)
-    return ls_file
+    if len(ls_file) > 1:
+        msg = f'Muitos arquivos em {directory}'
+        log_process.error(msg)
+        raise Exception(msg)
+    if len(ls_file) == 0:
+        msg = f'Está faltando um arquivo em {directory}'
+        log_process.error(msg)
+        raise Exception(msg)
+    return ls_file[0]
 
 
 def check_parameters():
@@ -28,7 +36,7 @@ def check_parameters():
     args = [arg for arg in sys.argv if not arg.endswith('.py')]
     if set(args) - set(available_args):
         unknown = set(args) - set(available_args)
-        raise Exception(f"\n\n\nUnknown arguments used: {list(unknown)} \n\n Available arguments : 'message', 'file', 'video' ")
+        raise Exception(f"\n\n\nArgumentos desconhecidos: {list(unknown)}")
     log_process.info(f"ARGS KEPT : {args}")
     return args
 

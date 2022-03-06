@@ -1,4 +1,7 @@
 import logging
+import sys
+
+sys.tracebacklimit = 0
 
 logging.basicConfig(
     filename="logs/logs.log",

@@ -45,8 +45,8 @@ class InstaBot(SeleniumManager):
                 self._click_next()
                 self._click_msg_box()
                 self._send_info()
-            except:
-                self._append_to_error_list('messages', user)
+            except Exception as err:
+                self._append_to_error_list('messages', user, err)
                 self._access_message_page()
 
     def _send_videos(self):
@@ -55,8 +55,8 @@ class InstaBot(SeleniumManager):
                 self._click_video_msg()
                 self._select_username(user)
                 self._send_video()
-            except:
-                self._append_to_error_list('video', user)
+            except Exception as err:
+                self._append_to_error_list('video', user, err)
                 self._access_video_page()
 
     def _select_username(self, user):
@@ -102,14 +102,17 @@ class InstaBot(SeleniumManager):
         users = self.users
         for n, user in enumerate(users):
             print(n, user)
+            if n %50 == 0:
+                log_process.info(n)
             yield user
+
 
     def _launch_url(self, url):
         self.driver.get(url)
 
-    def _append_to_error_list(self, type, user):
-        msg = f"{type} - {user}"
-        log_user_fail.info(msg)
+    def _append_to_error_list(self, type, user, err):
+        msg = f"{user} - {type} - {err}"
+        log_user_fail.error(msg)
 
     @sleep(2)
     def _click_msg_box(self):
