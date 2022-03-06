@@ -1,13 +1,18 @@
 from src.instabot import InstaBot
+from src.utils.toolbox import check_parameters
 
+def init(args):
+    insta_bot = InstaBot(args)
+    if any(x in ['message', 'file'] for x in args):
+        insta_bot.run_message()
+    if 'video' in args:
+        insta_bot.run_video()
 
-
-def init():
-    InstaBot()
-    input("DONE")
 
 if __name__ == "__main__":
-    init()
+    args = check_parameters()
+    args = ['message', 'file']
+    init(args)
 
 
 

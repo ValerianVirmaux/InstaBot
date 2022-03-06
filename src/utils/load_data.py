@@ -1,30 +1,35 @@
 from src.utils.toolbox import open_txt_file, clean, get_file_path
 import json
+from logs.logging_toolbox import log_process
 
-def get_usernames(path):
+def get_usernames():
+    path = get_file('data/usernames/')
     usernames = open_txt_file(path)
     usernames_clean = clean(usernames)
     ls_usernames = usernames_clean.split(' ')
+    log_process.info(f'Processing {len(ls_usernames)} usernames')
     return ls_usernames
 
-def get_errors(path):
-    import re
-    errors = open_txt_file(path)
-    errors = re.sub(' +', ' ', errors)
-    errors = errors.replace('\n', ' ')
-    errors = errors.split(' ')
-    errors = [error for error in errors if error]
-    return errors
+def get_file(directory):
+    paths = get_file_path(directory)
+    log_process.info(f"FILE(S) >  {' - '.join(paths)}")
+    return paths[0]
+
+def get_video():
+    videoId = input("Video ID: ")
+    log_process.info(f"VIDEO >  {videoId}")
+    return videoId
 
 def get_message(directory):
-    path = get_file_path(directory)
+    path = get_file_path(directory)[0]
     message = open_txt_file(path)
     message_clean = message.replace('\n', ' ')
-    print(f"MESSAGE: {path}")
+    log_process.info(f"MESAGE(S) >  {message_clean}")
     return message_clean
 
 
-def load_selenium_path(path):
+def load_selenium_path():
+    path = get_file('config/path/')
     with open(path, 'r') as f:
         data = json.loads(f.read())
         return data

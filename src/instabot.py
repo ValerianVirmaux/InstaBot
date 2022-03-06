@@ -1,31 +1,35 @@
 # importing module
+
 import os
 
 from src.utils.decorators import sleep
-from src.utils.load_data import get_message, get_usernames, load_selenium_path, get_errors
+from src.utils.load_data import get_message, get_usernames, load_selenium_path, get_file, get_video
 from src.seleniumlauncher import SeleniumManager
-from logs.logging_toolbox import log_metrics
-from src.utils.toolbox import get_file_path
-import sys
+from logs.logging_toolbox import log_process, log_user_fail
 
 
 class InstaBot(SeleniumManager):
 
-    PATH_USERS = "data/usernames/test.txt"
-    PATH_FAIL = "data/usernames/errors.txt"
-    PATH_SELENIUM = 'data/selenium_path.json'
-
-    def __init__(self):
-        self.base_url = 'https://www.instagram.com/'
-        self.users = get_usernames(self.PATH_USERS)
-        self.path = load_selenium_path(self.PATH_SELENIUM)
-        self.parse_arguments()
+    def __init__(self, args):
+        self.users = get_usernames()
+        self.path = load_selenium_path()
+        self.parse_arguments(args)
         self.setup()
         self._access()
-        self._run()
 
+    def run_video(self):
+        log_process.info('Processing Video...')
+        self._access_video_page()
+        self._send_videos()
+
+    def run_message(self):
+        log_process.info('Processing messages...')
+        self._access_message_page()
+        self._process_messages()
+
+    # Private
     def _access(self):
-        self._launch_url()
+        self._launch_url('https://www.instagram.com/')
         self._login_access()
         self._login_username()
         self._login_password()
@@ -33,37 +37,26 @@ class InstaBot(SeleniumManager):
         self._popup_1()
         self._popup_2()
 
-    def _run(self):
-        if self.videoId:
-            self._process_for_videos()
-        if self.message or self.file:
-            self._process_for_file_or_message()
-
-    def _process_for_file_or_message(self):
-        self._click_direct_button()
-        for n, user in self._user_iteration():
+    def _process_messages(self):
+        for user in self._user_iteration():
             try:
                 self._click_pencil()
                 self._select_username(user)
                 self._click_next()
                 self._click_msg_box()
                 self._send_info()
-                print('file', n, user)
             except:
-                self._append_to_error_list(user)
-                self._launch_url()
-                self._click_direct_button()
+                self._append_to_error_list('messages', user)
+                self._access_message_page()
 
-    def _process_for_videos(self):
-        self._access_video_page()
-        for n, user in self._user_iteration():
+    def _send_videos(self):
+        for user in self._user_iteration():
             try:
                 self._click_video_msg()
                 self._select_username(user)
                 self._send_video()
-                print('video', n, user)
             except:
-                self._append_to_error_list(user)
+                self._append_to_error_list('video', user)
                 self._access_video_page()
 
     def _select_username(self, user):
@@ -73,26 +66,18 @@ class InstaBot(SeleniumManager):
     def _access_video_page(self):
         video_path = self._get_video_path()
         self._launch_url(video_path)
-        return
 
+    def _access_message_page(self):
+        url = 'https://www.instagram.com/direct/inbox/'
+        self._launch_url(url)
 
-    def parse_arguments(self):
-        videoId, message, file = '', False, False
-        args = [arg for arg in sys.argv if not arg.endswith('.py')]
-        if set(args) - set(['message', 'file', 'video']):
-            unknown = set(args) - set(['message', 'file', 'video'])
-            raise Exception(f"\n\n\nUnknown arguments used: {list(unknown)} \n\n Available arguments : 'message', 'file', 'video' ") 
+    def parse_arguments(self, args):
         if 'video' in args:
-            videoId = input("Video ID: ")
-            print(f"VIDEO: {videoId}")
+            self.videoId = get_video()
         if 'file' in args:
-            file = get_file_path('data/file/')
-            print(f"FILE: {file}")
+            self.file = get_file('data/file/')
         if 'message' in args:
-            message = get_message('data/messages/')
-        self.videoId = videoId
-        self.message = message
-        self.file = file
+            self.message = get_message('data/messages/')
 
     def _get_video_path(self):
         videoId = self.videoId
@@ -107,29 +92,26 @@ class InstaBot(SeleniumManager):
         if self.file:
             file = self.file
             self._insert_file(file)
-            print("     file sent")
+            print('     file sent')
         if self.message:
             self._type_msg()
             self._send_msg()
-            print("     message sent")
+            print('     message sent')
+
     def _user_iteration(self):
         users = self.users
         for n, user in enumerate(users):
-            yield n, user
+            print(n, user)
+            yield user
 
-    def _launch_url(self, url=None):
-        if url:
-            self.driver.get(url)
-        else:
-            base_url = self.base_url
-            self.driver.get(base_url)
+    def _launch_url(self, url):
+        self.driver.get(url)
 
-    def _append_to_error_list(self, user):
-        PATH_FAIL = self.PATH_FAIL
-        with open(PATH_FAIL, 'a') as fd:
-            fd.write(f'\n{user}')
-        print(f"FAIL {user}")
+    def _append_to_error_list(self, type, user):
+        msg = f"{type} - {user}"
+        log_user_fail.info(msg)
 
+    @sleep(2)
     def _click_msg_box(self):
         path = self.path['click_msg_box']
         self.click_by_xpath(path)
@@ -139,18 +121,17 @@ class InstaBot(SeleniumManager):
         path = self.path['login_access']
         self.click_by_xpath(path)
 
+    @sleep(3)
     def _login_username(self):
         username = os.environ['INSTAGRAM_USERNAME']
         user = self.find_by_name('username')
         user.send_keys(username)
 
-    @sleep(3)
     def _login_password(self):
         password = os.environ['INSTAGRAM_PASSWORD']
         passw = self.find_by_name('password')
         passw.send_keys(password)
 
-    @sleep(3)
     def _login_validation(self):
         selector = "button[type='submit']"
         self.click_by_css(selector)
@@ -162,13 +143,11 @@ class InstaBot(SeleniumManager):
 
     @sleep(4)
     def _popup_2(self):
-        path = self.path['popup_2']
-        self.click_by_xpath(path)
-
-    @sleep(3)
-    def _click_direct_button(self):
-        path = self.path['direct_button']
-        self.click_by_xpath(path)
+        paths = self.path['popup_2']
+        try:
+            self.click_by_xpath(paths[0])
+        except:
+            self.click_by_xpath(paths[1])
 
     @sleep(2)
     def _click_pencil(self):

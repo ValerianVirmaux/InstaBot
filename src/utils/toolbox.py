@@ -1,7 +1,7 @@
 import re
-from os import listdir
-from os.path import isfile, join
 import os
+import sys
+from logs.logging_toolbox import log_process
 
 def open_txt_file(path):
     with open(path, "r") as f:
@@ -19,9 +19,16 @@ def get_file_path(directory):
         for f in filenames:
             file = os.path.abspath(os.path.join(dirpath, f))
             ls_file.append(file)
-    if len(ls_file) > 1:
-        raise Exception(f'Too many files in folder {directory}')
-    if len(ls_file) == 0:
-        raise Exception(f'There is no file in {directory}')
-    return ls_file[0]
+    return ls_file
+
+
+def check_parameters():
+    log_process.info(f"ARGS RECEIVED : {sys.argv}")
+    available_args = ['message', 'file', 'video']
+    args = [arg for arg in sys.argv if not arg.endswith('.py')]
+    if set(args) - set(available_args):
+        unknown = set(args) - set(available_args)
+        raise Exception(f"\n\n\nUnknown arguments used: {list(unknown)} \n\n Available arguments : 'message', 'file', 'video' ")
+    log_process.info(f"ARGS KEPT : {args}")
+    return args
 

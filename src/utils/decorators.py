@@ -23,8 +23,8 @@ def retry(howmany):
 def sleep(n):
     def decorator_func(func):
         def wrapper_func(*args, **kwargs):
-            retval = func(*args, **kwargs)
             time.sleep(n)
+            retval = func(*args, **kwargs)
             return retval
         return wrapper_func
     return decorator_func

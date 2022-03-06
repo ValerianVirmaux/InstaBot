@@ -1,16 +1,14 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-
+from src.utils.toolbox import get_file_path
 from src.utils.decorators import retry
 import os
 
 
-env = os.environ['ENVIRONMENT']
+env = os.environ.get('ENVIRONMENT')
 
 
 class SeleniumManager:
-
-    PATH_DRIVER = "config/driver/chromedriver"
 
     def setup(self):
         self._get_options()
@@ -28,12 +26,12 @@ class SeleniumManager:
         self._options = options
 
     def _setup_driver(self):
-        PATH_DRIVER = self.PATH_DRIVER
         options = self._options
-        if env != 'LOCAL':
-            driver = webdriver.Chrome(chrome_options=options)
+        if env == 'LOCAL':
+            path_driver = get_file_path('config/driver/')
+            driver = webdriver.Chrome(path_driver[0], chrome_options=options)
         else:
-            driver = webdriver.Chrome(PATH_DRIVER, chrome_options=options)
+            driver = webdriver.Chrome(chrome_options=options)
         self.driver = driver
 
 
