@@ -4,7 +4,7 @@ import sys
 sys.tracebacklimit = 0
 
 logging.basicConfig(
-    filename="logs/logs.log",
+    filename="logs/logs2.log",
     filemode='w',
     format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
     datefmt='%H:%M:%S',

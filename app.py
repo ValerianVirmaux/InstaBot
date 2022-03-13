@@ -11,8 +11,5 @@ def main(args):
 
 if __name__ == "__main__":
     args = check_parameters()
-#    args = ['message', 'file']
+    args = ['file']
     main(args)
-
-
-

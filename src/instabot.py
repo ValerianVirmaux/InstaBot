@@ -73,11 +73,20 @@ class InstaBot(SeleniumManager):
 
     def parse_arguments(self, args):
         if 'video' in args:
-            self.videoId = get_video()
+            videoId = get_video()
+        else:
+            videoId = None
         if 'file' in args:
-            self.file = get_file('data/file/')
+            file = get_file('data/file/')
+        else:
+            file = None
         if 'message' in args:
-            self.message = get_message('data/messages/')
+            message = get_message('data/messages/')
+        else:
+            message = None
+        self.videoId = videoId
+        self.file = file
+        self.message = message
 
     def _get_video_path(self):
         videoId = self.videoId
