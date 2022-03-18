@@ -1,6 +1,6 @@
 from src.utils.toolbox import open_txt_file, clean, get_file_path
 import json
-from logs.logging_toolbox import log_process
+from src.logs.logging_toolbox import log_process
 
 
 def get_usernames():

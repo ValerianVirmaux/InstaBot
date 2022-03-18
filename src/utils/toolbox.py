@@ -1,7 +1,7 @@
 import re
 import os
 import sys
-from logs.logging_toolbox import log_process
+from src.logs.logging_toolbox import log_process
 
 def open_txt_file(path):
     with open(path, "r") as f:

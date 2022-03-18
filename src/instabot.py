@@ -5,15 +5,15 @@ import os
 from src.utils.decorators import sleep
 from src.utils.load_data import get_message, get_usernames, load_selenium_path, get_file, get_video
 from src.seleniumlauncher import SeleniumManager
-from logs.logging_toolbox import log_process, log_user_fail
+from src.logs.logging_toolbox import log_process, log_user_fail
 
 
 class InstaBot(SeleniumManager):
 
-    def __init__(self, args):
+    def __init__(self, arg):
         self.users = get_usernames()
         self.path = load_selenium_path()
-        self.parse_arguments(args)
+        self.parse_arguments(arg)
         self.setup()
         self._access()
 
@@ -71,22 +71,10 @@ class InstaBot(SeleniumManager):
         url = 'https://www.instagram.com/direct/inbox/'
         self._launch_url(url)
 
-    def parse_arguments(self, args):
-        if 'video' in args:
-            videoId = get_video()
-        else:
-            videoId = None
-        if 'file' in args:
-            file = get_file('data/file/')
-        else:
-            file = None
-        if 'message' in args:
-            message = get_message('data/messages/')
-        else:
-            message = None
-        self.videoId = videoId
-        self.file = file
-        self.message = message
+    def parse_arguments(self, arg):
+        self.videoId = arg['value'] if arg['type'] == 'video' else None
+        self.file = arg['value'] if arg['type'] == 'file' else None
+        self.message = arg['value'] if arg['type'] == 'message' else None
 
     def _get_video_path(self):
         videoId = self.videoId
@@ -99,13 +87,10 @@ class InstaBot(SeleniumManager):
 
     def _send_info(self):
         if self.file:
-            file = self.file
-            self._insert_file(file)
-            print('     file sent')
+            self._insert_file()
         if self.message:
             self._type_msg()
             self._send_msg()
-            print('     message sent')
 
     def _user_iteration(self):
         users = self.users
@@ -193,7 +178,8 @@ class InstaBot(SeleniumManager):
         chat = self.find_by_xpath(path)
         chat.send_keys(message)
 
-    def _insert_file(self, file):
+    def _insert_file(self):
+        file = self.file
         path = self.path['insert_file']
         msg_box = self.find_by_xpath(path)
         msg_box.send_keys(file)

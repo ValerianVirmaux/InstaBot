@@ -1,6 +1,6 @@
 import time
 
-from logs.logging_toolbox import log_process
+from src.logs.logging_toolbox import log_process
 
 def retry(howmany):
     def tryIt(func):
