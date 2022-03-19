@@ -3,8 +3,7 @@ import json
 from src.logs.logging_toolbox import log_process
 
 
-def get_usernames():
-    path = get_file('data/usernames/')
+def get_usernames(path):
     usernames = open_txt_file(path)
     usernames_clean = clean(usernames)
     ls_usernames = usernames_clean.split(' ')

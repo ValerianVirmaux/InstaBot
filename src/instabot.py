@@ -11,7 +11,8 @@ from src.logs.logging_toolbox import log_process, log_user_fail
 class InstaBot(SeleniumManager):
 
     def __init__(self, arg):
-        self.users = get_usernames()
+        self.arg = arg
+        self.users = get_usernames(arg['username'])
         self.path = load_selenium_path()
         self.parse_arguments(arg)
         self.setup()
@@ -120,12 +121,14 @@ class InstaBot(SeleniumManager):
 
     @sleep(3)
     def _login_username(self):
-        username = os.environ['INSTAGRAM_USERNAME']
+        arg = self.arg
+        username = arg['con']['username']
         user = self.find_by_name('username')
         user.send_keys(username)
 
     def _login_password(self):
-        password = os.environ['INSTAGRAM_PASSWORD']
+        arg = self.arg
+        password = arg['con']['password']
         passw = self.find_by_name('password')
         passw.send_keys(password)
 
