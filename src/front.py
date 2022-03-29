@@ -21,7 +21,6 @@ class SampleApp(Tk):
         self.geometry("500x250")
         self.title('--- JORGE ---')
 
-
         self.frames = {}
         for F in (StartPage, SendVideo, SendMessage, LoadUsernames, UserAccess, ConfirMation):
             page_name = F.__name__
@@ -167,8 +166,9 @@ class UserAccess(Frame):
             username = self.username.get()
             password = self.password.get()
             arg['con'] = {'username': username, 'password': password}
-            self.controller.destroy()
-            call_back(arg)
+            self.controller.show_frame("ConfirMation",arg)
+#            self.controller.destroy()
+#            call_back(arg)
 
         button = Button(self, text="Si", command = send)
         button.pack(side='bottom', pady=10)
