@@ -34,9 +34,9 @@ class SeleniumManager:
         self.driver = driver
 
     @retry(3)
-    def click_by_xpath(self, path):
+    def click_by_xpath(self, xpath):
         driver = self.driver
-        element = driver.find_element(By.XPATH, path)
+        element = driver.find_element(By.XPATH, xpath)
         element.click()
 
     @retry(3)
@@ -56,3 +56,4 @@ class SeleniumManager:
         driver = self.driver
         element = driver.find_element(By.XPATH, xpath)
         return element
+

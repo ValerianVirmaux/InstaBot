@@ -44,7 +44,7 @@ class InstaBot(SeleniumManager):
                 self._click_pencil()
                 self._select_username(user)
                 self._click_next()
-                self._click_msg_box()
+#                self._click_msg_box()
                 self._send_info()
             except Exception as err:
                 self._append_to_error_list('messages', user, err)
@@ -86,6 +86,7 @@ class InstaBot(SeleniumManager):
         path = self.path['send_video']
         self.click_by_xpath(path)
 
+    @sleep(2)
     def _send_info(self):
         if self.file:
             self._insert_file()
@@ -181,6 +182,7 @@ class InstaBot(SeleniumManager):
         chat = self.find_by_xpath(path)
         chat.send_keys(message)
 
+    @sleep(2)
     def _insert_file(self):
         file = self.file
         path = self.path['insert_file']
