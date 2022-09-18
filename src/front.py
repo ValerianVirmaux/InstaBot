@@ -59,7 +59,7 @@ class StartPage(Frame):
         filepath = filedialog.askopenfilename(
             initialdir = os.getcwd(),
             title = "Select a File",
-            filetypes = ((("all files","*.*"),("python files","*.py"))
+            filetypes = ((("all files","*.*"),("python files","*.py"), ("JPEG files","*.jpg"))
             ))
         if filepath == () or filepath == '':
             messagebox.showerror("Jorge", "Mi flyer ???")
